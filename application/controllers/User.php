@@ -42,7 +42,7 @@ class User extends CI_Controller {
 
                 $att = $this->User_model->get_att_data($attendancedata[0], $date);
 
-                // if (empty($att)) {
+                if (empty($att)) {
 
                     $data = array(
                         //'device_index' => $idx,
@@ -60,14 +60,14 @@ class User extends CI_Controller {
                               'date' => $date,
                             );
 
-                    // $attendanc = $this->User_model->get_data('user_attendances','',$where);
+                    $attendanc = $this->User_model->get_data('user_attendances','',$where);
 
-                    // if (empty($attendanc)) {
-                    //     $this->User_model->inserter('user_attendances', $data);
-                    // }
+                    if (empty($attendanc)) {
+                        $this->User_model->inserter('user_attendances', $data);
+                    }
 
                     $this->User_model->inserter('user_attendances', $data);
-                // }
+                }
 
             endwhile;
     }
